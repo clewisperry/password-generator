@@ -17,18 +17,20 @@ l_case = "abcdefghijklmnopqrstuvwxyz" # lowercase chars
 u_case = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" # uppercase chars
 num = "0123456789" # integers
 sym = "@#$%^&*/\?" # symbols
+fname = f'{uname}@{service}.csv'# filenaem
 
-Use_for = l_case + u_case + num + sym
+Use_for = l_case + u_case + num + sym # Create a string of all chars integers and symbols.
 
 
-pwd = "".join(random.sample(Use_for, pwd_len))
+pwd = "".join(random.sample(Use_for, pwd_len)) # create a random password from given string
 
-print(f'Your Generated Password is: {pwd}')
+print(f'Your Generated Password is: {pwd}') # print password to console
 
-#dictionary of creds
-dict = {'Service': service, 'Username': uname, 'Password': pwd}
 
-df = pd.DataFrame(dict, index=[0])
+dict = {'Service': service, 'Username': uname, 'Password': pwd} # dictionary of creds
 
-#save dataframe
-df.to_csv('database.csv', mode='a', index=False, header=False)
+
+df = pd.DataFrame(dict, index=[0]) # create dataframe from dictionary
+
+
+df.to_csv(fname, mode='a', index=False, header=False) # save dataframe
